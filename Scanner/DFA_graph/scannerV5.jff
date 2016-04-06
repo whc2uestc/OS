@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 6.4.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="q0">
+			<x>550.0</x>
+			<y>152.0</y>
+			<label>start</label>
+			<initial/>
+			<final/>
+		</state>
+		<state id="1" name="q1">
+			<x>171.0</x>
+			<y>52.0</y>
+			<label>read OVER</label>
+		</state>
+		<state id="2" name="q2">
+			<x>53.0</x>
+			<y>195.0</y>
+			<label>in comment</label>
+		</state>
+		<state id="3" name="q3">
+			<x>236.0</x>
+			<y>207.0</y>
+			<label>wait for OVER</label>
+		</state>
+		<state id="4" name="q4">
+			<x>191.0</x>
+			<y>350.0</y>
+			<label>read LT</label>
+		</state>
+		<state id="5" name="q5">
+			<x>945.0</x>
+			<y>338.0</y>
+			<label>read GT</label>
+		</state>
+		<state id="6" name="q6">
+			<x>355.0</x>
+			<y>449.0</y>
+			<label>read EQ</label>
+		</state>
+		<state id="7" name="q7">
+			<x>656.0</x>
+			<y>444.0</y>
+			<label>read AMP</label>
+		</state>
+		<state id="8" name="q8">
+			<x>1014.0</x>
+			<y>206.0</y>
+			<label>in NUMBER</label>
+		</state>
+		<state id="9" name="q9">
+			<x>1020.0</x>
+			<y>62.0</y>
+			<label>in ID</label>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>5</from>
+			<to>0</to>
+			<read>non=  ~ UC</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>6</to>
+			<read>= ~ </read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>* ~ </read>
+		</transition>
+		<transition>
+			<from>9</from>
+			<to>0</to>
+			<read>non-letter ~ UC   ( Keyword type  or ID? )</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>3</to>
+			<read>* ~ </read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<controlx>552</controlx>
+			<controly>93</controly>
+			<read>white space ~ L</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>8</to>
+			<read>digit ~ R</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>* ~ </read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>0</to>
+			<read>non=  ~ UC</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<controlx>546</controlx>
+			<controly>45</controly>
+			<read>  EOS ~ C</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>7</to>
+			<read>! ~ </read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>4</to>
+			<read>&lt; ~</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>9</to>
+			<read>letter ~ R</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<controlx>542</controlx>
+			<controly>7</controly>
+			<read>+  -  *  (  ) [ ] { }  , ;   ~  C</read>
+		</transition>
+		<transition>
+			<from>8</from>
+			<to>8</to>
+			<read>digit ~ R</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>2</to>
+			<read>non* non/ ~ </read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>0</to>
+			<read>= ~ C</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>non * ~ </read>
+		</transition>
+		<transition>
+			<from>8</from>
+			<to>0</to>
+			<read>non-digit ~ UC</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>/  ~  </read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>0</to>
+			<read>= ~ C</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>0</to>
+			<read>non= ~  UC</read>
+		</transition>
+		<transition>
+			<from>9</from>
+			<to>9</to>
+			<read>letter ~ R</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>0</to>
+			<read>non*  ~ UC</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>0</to>
+			<read>/ ~ </read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>5</to>
+			<read>&gt; ~ </read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>0</to>
+			<read>= ~ C</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>0</to>
+			<read>=  ~ C</read>
+		</transition>
+		<note>
+			<text>Each rule is described as two parts in the form:
+                    condition  ~  side_effect
+In "condition", parts separated by space means "or" conditions.  
+When side_effect is empty, it means doing nothing.
+"side_effect" It is marked by symbols:
+* U: unget the current char (decrement the current position), and it is not recorded
+* R: record the current char (into the token string). Only ID/Keywords and NUM need the R function
+* L: increment the line number when '\n' is read.
+* C: create a token with its proper token type and token string, and, add a token node containing 
+this token into the token list.  TokenString is cleared after this operation.   
+[Observations]:
+* Only edges come into q0 may have the speicial side-effect C:
+* When a character is read from the input, the position in the input is automatically incremented .
+* Only for tokens with type ID or NUM, the token string is not NULL. Otherwise, the token string
+can be recorded as NULL, since its type uniquely decides its string form. </text>
+			<x>853.0</x>
+			<y>493.0</y>
+		</note>
+		<note>
+			<text>31 Oct 2015
+Zhiyao Liang
+MUST FIT </text>
+			<x>1539.0</x>
+			<y>430.0</y>
+		</note>
+	</automaton>
+</structure>
