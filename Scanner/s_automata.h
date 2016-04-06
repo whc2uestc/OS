@@ -5,7 +5,7 @@
   * "Compiler Construction: Principles and Practice"
   * Book author:  Kenneth C. Louden
   * MUST CS106 2015 Fall
-  * Programming designed by the teacher: Liang, Zhiyao
+  * Programming designed by whc
   * Created on: Sep 25, 2015
   ****************************************************/
 
