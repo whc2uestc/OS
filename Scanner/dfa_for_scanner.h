@@ -3,7 +3,7 @@
   * A compiler for the C-Minus language
   *
   * MUST CS106 2015 Fall
-  * Programming designed by the teacher: Liang, Zhiyao
+  * Programming designed by whc
   * Created on: Nov 2, 2015
   ****************************************************/
 
