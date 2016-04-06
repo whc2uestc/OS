@@ -1,0 +1,73 @@
+Using a unified style of coding:
+
+* When the return has only two values, yes or no, instead of -1 or 0, using Bool
+* all char situation changed to int. curent char, and so on, in the functions and rules.
+
+dumped
+/* possibly close the the stream, a dummy function here */
+/* do nothing
+static void close(void){
+	return;
+}
+*/
+
+
+removed self from streamer, since it will only be useful if every mothod has a self parameter. 
+  struct streamer * self; /*self reference, like "this" of some OOP language */
+  
+  
+  	streamer->self = streamer;
+  	
+ dumped code, note the commented condition() versions.
+ struct aRule{
+	int c;
+	State from;
+	State to;
+	/*
+	Bool (*condition)(char);
+	Bool (*condition)(int);
+	*/
+	Bool (*condition)(SAutomata *);
+	/* check the condition involving both the c and from */
+	void (*side_effect)(SAutomata*); /* the action that is performed by firing this rule */
+
+};
+
+*  oct 22 2015, char c changed to int c.
+ *  */
+unsigned int add_rule(SAutomata *atp, State from, State to, int c, Bool (*condition)(/*char int*/ SAutomata *), void (*side_effect)(SAutomata*));
+
+streamer.h:
+
+ /* Decrement the current position, and then put the char c at the decremented position
+   * which means the next time get_current_char() will return the c that is unget here.
+   *  the behavior should be similar to
+   * ungetc()
+   * http://www.cplusplus.com/reference/cstdio/ungetc/
+   * However, the implementation has some obscurity. and so far there is no need to put back some character, only
+   * need to decrement a position. so, leave it for now.
+   *
+   *  char (*unget_char)(char c);
+   *
+   */
+
+/* change all functions like the stile in library
+ * long int ftell ( FILE * stream );
+ * int fgetc ( FILE * stream );
+ * int fseek ( FILE * stream, long int offset, int origin );
+ * int ungetc ( int character, FILE * stream );
+ * int fclose ( FILE * stream );
+ *
+ * So, characters are reported as int.
+ */
+
+/*
+int (*unget_char)(int c);
+*/
+/* Decrement the current position, and then put the char c at the decremented position */
+
+[change]
+the streamer's methods changed from using parameter void
+to Streamer *,
+The Streamer's data are moved from static global to 
+struct inputInfo, which is a member of streamer. 
